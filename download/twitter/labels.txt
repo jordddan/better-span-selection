@@ -1,0 +1,10 @@
+geo-loc
+facility
+movie
+company
+product
+person
+other
+sportsteam
+tvshow
+musicartist
