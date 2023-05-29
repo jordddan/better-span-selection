@@ -1,0 +1,36 @@
+/opt/conda/envs/visgpt/lib/python3.8/site-packages/transformers/optimization.py:407: FutureWarning: This implementation of AdamW is deprecated and will be removed in a future version. Use the PyTorch implementation torch.optim.AdamW instead, or set `no_deprecation_warning=True` to disable this warning
+  warnings.warn(
+05/29/2023 15:08:16 - INFO - __main__ -   ***** Running training *****
+05/29/2023 15:08:16 - INFO - __main__ -     Num examples = 14041
+05/29/2023 15:08:16 - INFO - __main__ -     Num Epochs = 20
+05/29/2023 15:08:16 - INFO - __main__ -     Total train batch size (w. parallel, accumulation) = 32
+05/29/2023 15:08:16 - INFO - __main__ -     Gradient Accumulation steps = 1
+05/29/2023 15:08:16 - INFO - __main__ -     Total optimization steps = 8780
+Epoch:   0%|                                                                                                                                                                            | 0/20 [00:00<?, ?it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

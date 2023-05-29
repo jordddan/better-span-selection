@@ -19,6 +19,8 @@ class InputExample(object):
         self.guid = guid
         self.words = words
         self.label_spans = label_spans
+        self.conf_mat1 = None
+        self.conf_mat2 = None
         self.conf_mat = None
         self.bio_labels = bio_labels
         self.length = len(self.words)
