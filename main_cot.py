@@ -64,7 +64,7 @@ class Trainer:
 
         self.wandb_config = self.get_wandb_config()
 
-        wandb.init(project=f"NER-{args.task}", config=self.wandb_config)
+        wandb.init(project=f"NER-{args.task}-seed{args.seed}", config=self.wandb_config)
 
     def get_wandb_config(self):
         args = self.args

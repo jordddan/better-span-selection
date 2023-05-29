@@ -19,7 +19,7 @@ if [ ${TASK:0:5} == "conll" ]; then
     BEGIN_EPOCH=1
     BEGIN_F1=0.6
     LR=1e-5
-    NUM_EPOCHS=20
+    NUM_EPOCHS=40
 elif [ $TASK == "webpage" ]; then
     WARMUP_STEPS=200
     SAVE_STEPS=100
@@ -27,7 +27,7 @@ elif [ $TASK == "webpage" ]; then
     BEGIN_EPOCH=1
     BEGIN_F1=0.5
     LR=1e-5
-    NUM_EPOCHS=50
+    NUM_EPOCHS=100
 elif [ $TASK == "twitter" ]; then
     WARMUP_STEPS=400
     SAVE_STEPS=100
@@ -35,7 +35,7 @@ elif [ $TASK == "twitter" ]; then
     BEGIN_EPOCH=1
     BEGIN_F1=0.5
     LR=2e-5
-    NUM_EPOCHS=25
+    NUM_EPOCHS=50
 elif [ $TASK == "bc5cdr" ]; then
     WARMUP_STEPS=200
     SAVE_STEPS=100
@@ -43,7 +43,7 @@ elif [ $TASK == "bc5cdr" ]; then
     BEGIN_EPOCH=1
     BEGIN_F1=0.5
     LR=2e-5
-    NUM_EPOCHS=25
+    NUM_EPOCHS=50
 fi
 
 if [ $MODEL == "bert-large-cased" ] || [ $MODEL == "bert-base-cased" ]; then
