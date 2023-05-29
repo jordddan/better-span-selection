@@ -1,0 +1,747 @@
+2023-05-29 19:21:06,345 INFO    StreamThr :27409 [internal.py:wandb_internal():86] W&B internal server running at pid: 27409, started at: 2023-05-29 19:21:06.345033
+2023-05-29 19:21:06,348 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status
+2023-05-29 19:21:06,355 INFO    WriterThread:27409 [datastore.py:open_for_write():85] open: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/run-na83jqvx.wandb
+2023-05-29 19:21:06,356 DEBUG   SenderThread:27409 [sender.py:send():375] send: header
+2023-05-29 19:21:06,419 DEBUG   SenderThread:27409 [sender.py:send():375] send: run
+2023-05-29 19:21:06,704 INFO    SenderThread:27409 [dir_watcher.py:__init__():219] watching files in: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files
+2023-05-29 19:21:06,704 INFO    SenderThread:27409 [sender.py:_start_run_threads():1124] run started: na83jqvx with start time 1685359266.344593
+2023-05-29 19:21:06,705 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: summary_record
+2023-05-29 19:21:06,705 INFO    SenderThread:27409 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-29 19:21:06,710 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: check_version
+2023-05-29 19:21:06,711 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: check_version
+2023-05-29 19:21:06,810 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: run_start
+2023-05-29 19:21:06,821 DEBUG   HandlerThread:27409 [system_info.py:__init__():31] System info init
+2023-05-29 19:21:06,821 DEBUG   HandlerThread:27409 [system_info.py:__init__():46] System info init done
+2023-05-29 19:21:06,821 INFO    HandlerThread:27409 [system_monitor.py:start():181] Starting system monitor
+2023-05-29 19:21:06,822 INFO    SystemMonitor:27409 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2023-05-29 19:21:06,822 INFO    HandlerThread:27409 [system_monitor.py:probe():201] Collecting system info
+2023-05-29 19:21:06,823 INFO    SystemMonitor:27409 [interfaces.py:start():190] Started cpu monitoring
+2023-05-29 19:21:06,823 INFO    SystemMonitor:27409 [interfaces.py:start():190] Started disk monitoring
+2023-05-29 19:21:06,824 INFO    SystemMonitor:27409 [interfaces.py:start():190] Started gpu monitoring
+2023-05-29 19:21:06,826 INFO    SystemMonitor:27409 [interfaces.py:start():190] Started memory monitoring
+2023-05-29 19:21:06,826 INFO    SystemMonitor:27409 [interfaces.py:start():190] Started network monitoring
+2023-05-29 19:21:06,897 DEBUG   HandlerThread:27409 [system_info.py:probe():195] Probing system
+2023-05-29 19:21:06,905 DEBUG   HandlerThread:27409 [system_info.py:_probe_git():180] Probing git
+2023-05-29 19:21:06,926 DEBUG   HandlerThread:27409 [system_info.py:_probe_git():188] Probing git done
+2023-05-29 19:21:06,926 DEBUG   HandlerThread:27409 [system_info.py:probe():240] Probing system done
+2023-05-29 19:21:06,927 DEBUG   HandlerThread:27409 [system_monitor.py:probe():210] {'os': 'Linux-4.15.0-210-generic-x86_64-with-glibc2.17', 'python': '3.8.16', 'heartbeatAt': '2023-05-29T11:21:06.898087', 'startedAt': '2023-05-29T11:21:06.333516', 'docker': None, 'cuda': None, 'args': ('--data_dir', '/workspace/jordan/Span-Selection/download//conll', '--model_type', 'roberta', '--model_name_or_path', 'roberta-base', '--output_dir', '/workspace/jordan/Span-Selection/outputs//conll/roberta-base-lr1e-5-epoch40-warmup800-bsz32-bepoch1-seed4', '--log_file', '/workspace/jordan/Span-Selection/outputs//conll/roberta-base-lr1e-5-epoch40-warmup800-bsz32-bepoch1-seed4/train.log', '--labels', '/workspace/jordan/Span-Selection/download//conll/labels.txt', '--eval_test_set', '--do_train', '--do_eval', '--batch_size', '32', '--eval_batch_size', '32', '--gradient_accumulation_steps', '1', '--mlp_hidden_size', '256', '--mlp_dropout_rate', '0.2', '--learning_rate', '1e-5', '--num_train_epochs', '40', '--save_steps', '200', '--warmup_steps', '800', '--overwrite_output_dir', '--seed', '4', '--select_begin_epoch', '1', '--neg_sample_rate', '0.35', '--pbegin_f1', '0.6', '--select_positive', '--select_negative'), 'state': 'running', 'program': '/workspace/jordan/Span-Selection/main.py', 'codePath': 'main.py', 'git': {'remote': 'https://github.com/jordddan/better-span-selection.git', 'commit': '2970832284269098c8b8ac7e0e567adb78b05ef1'}, 'email': '1192787158@qq.com', 'root': '/workspace/jordan/Span-Selection', 'host': 'GCR-OPENPAI-07', 'username': 'root', 'executable': '/opt/conda/envs/visgpt/bin/python', 'cpu_count': 28, 'cpu_count_logical': 28, 'cpu_freq': {'current': 1778.9952857142857, 'min': 1200.0, 'max': 3500.0}, 'cpu_freq_per_core': [{'current': 1197.257, 'min': 1200.0, 'max': 3500.0}, {'current': 1197.31, 'min': 1200.0, 'max': 3500.0}, {'current': 1197.837, 'min': 1200.0, 'max': 3500.0}, {'current': 1497.905, 'min': 1200.0, 'max': 3500.0}, {'current': 1396.869, 'min': 1200.0, 'max': 3500.0}, {'current': 1197.366, 'min': 1200.0, 'max': 3500.0}, {'current': 1796.284, 'min': 1200.0, 'max': 3500.0}, {'current': 1197.879, 'min': 1200.0, 'max': 3500.0}, {'current': 3192.574, 'min': 1200.0, 'max': 3500.0}, {'current': 1197.666, 'min': 1200.0, 'max': 3500.0}, {'current': 1197.336, 'min': 1200.0, 'max': 3500.0}, {'current': 1496.519, 'min': 1200.0, 'max': 3500.0}, {'current': 1197.294, 'min': 1200.0, 'max': 3500.0}, {'current': 2524.978, 'min': 1200.0, 'max': 3500.0}, {'current': 3294.211, 'min': 1200.0, 'max': 3500.0}, {'current': 2594.673, 'min': 1200.0, 'max': 3500.0}, {'current': 1197.219, 'min': 1200.0, 'max': 3500.0}, {'current': 1197.309, 'min': 1200.0, 'max': 3500.0}, {'current': 1197.208, 'min': 1200.0, 'max': 3500.0}, {'current': 1197.216, 'min': 1200.0, 'max': 3500.0}, {'current': 3289.294, 'min': 1200.0, 'max': 3500.0}, {'current': 1197.417, 'min': 1200.0, 'max': 3500.0}, {'current': 3192.576, 'min': 1200.0, 'max': 3500.0}, {'current': 2593.969, 'min': 1200.0, 'max': 3500.0}, {'current': 1197.361, 'min': 1200.0, 'max': 3500.0}, {'current': 2527.289, 'min': 1200.0, 'max': 3500.0}, {'current': 1496.561, 'min': 1200.0, 'max': 3500.0}, {'current': 1197.242, 'min': 1200.0, 'max': 3500.0}], 'disk': {'total': 1758.8579597473145, 'used': 572.7252655029297}, 'gpu': 'Tesla V100-PCIE-32GB', 'gpu_count': 8, 'gpu_devices': [{'name': 'Tesla V100-PCIE-32GB', 'memory_total': 34089730048}, {'name': 'Tesla V100-PCIE-32GB', 'memory_total': 34089730048}, {'name': 'Tesla V100-PCIE-32GB', 'memory_total': 34089730048}, {'name': 'Tesla V100-PCIE-32GB', 'memory_total': 34089730048}, {'name': 'Tesla V100-PCIE-32GB', 'memory_total': 34089730048}, {'name': 'Tesla V100-PCIE-32GB', 'memory_total': 34089730048}, {'name': 'Tesla V100-PCIE-32GB', 'memory_total': 34089730048}, {'name': 'Tesla V100-PCIE-32GB', 'memory_total': 34089730048}], 'memory': {'total': 503.7808952331543}}
+2023-05-29 19:21:06,927 INFO    HandlerThread:27409 [system_monitor.py:probe():211] Finished collecting system info
+2023-05-29 19:21:06,927 INFO    HandlerThread:27409 [system_monitor.py:probe():214] Publishing system info
+2023-05-29 19:21:06,927 DEBUG   HandlerThread:27409 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-05-29 19:21:06,927 DEBUG   HandlerThread:27409 [system_info.py:_save_pip():67] Saving pip packages done
+2023-05-29 19:21:06,927 DEBUG   HandlerThread:27409 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2023-05-29 19:21:07,709 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_created():278] file/dir created: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/requirements.txt
+2023-05-29 19:21:07,709 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_created():278] file/dir created: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/wandb-summary.json
+2023-05-29 19:21:07,710 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_created():278] file/dir created: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/conda-environment.yaml
+2023-05-29 19:21:13,367 DEBUG   HandlerThread:27409 [system_info.py:_save_conda():86] Saving conda packages done
+2023-05-29 19:21:13,368 INFO    HandlerThread:27409 [system_monitor.py:probe():216] Finished publishing system info
+2023-05-29 19:21:13,381 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:21:13,381 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-29 19:21:13,382 DEBUG   SenderThread:27409 [sender.py:send():375] send: files
+2023-05-29 19:21:13,382 INFO    SenderThread:27409 [sender.py:_save_file():1378] saving file wandb-metadata.json with policy now
+2023-05-29 19:21:13,394 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:21:13,395 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:21:13,519 DEBUG   SenderThread:27409 [sender.py:send():375] send: telemetry
+2023-05-29 19:21:13,519 DEBUG   SenderThread:27409 [sender.py:send():375] send: metric
+2023-05-29 19:21:13,520 DEBUG   SenderThread:27409 [sender.py:send():375] send: telemetry
+2023-05-29 19:21:13,520 DEBUG   SenderThread:27409 [sender.py:send():375] send: metric
+2023-05-29 19:21:13,713 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/conda-environment.yaml
+2023-05-29 19:21:13,714 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_created():278] file/dir created: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/wandb-metadata.json
+2023-05-29 19:21:13,714 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_created():278] file/dir created: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:21:13,757 INFO    wandb-upload_0:27409 [upload_job.py:push():137] Uploaded file /tmp/tmpc25b9_4awandb/ti3hpvzq-wandb-metadata.json
+2023-05-29 19:21:15,714 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:21:16,937 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:21:17,716 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:21:19,717 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:21:21,717 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:21:21,941 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:21:23,718 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:21:25,719 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:21:27,100 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:21:27,721 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:21:28,394 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:21:28,395 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:21:29,722 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:21:31,723 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:21:32,283 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:21:33,724 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:21:35,725 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:21:37,397 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:21:37,726 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/config.yaml
+2023-05-29 19:21:37,726 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:21:39,728 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:21:41,729 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:21:42,680 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:21:43,393 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:21:43,394 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:21:43,730 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:21:45,731 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:21:47,732 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:21:47,741 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:21:49,733 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:21:51,734 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:21:52,834 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:21:53,735 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:21:55,736 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:21:57,737 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:21:57,948 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:21:58,393 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:21:58,394 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:21:59,738 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:21:59,751 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-29 19:21:59,756 DEBUG   SenderThread:27409 [sender.py:send():375] send: history
+2023-05-29 19:21:59,756 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: summary_record
+2023-05-29 19:21:59,758 INFO    SenderThread:27409 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-29 19:22:00,739 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/wandb-summary.json
+2023-05-29 19:22:01,739 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:22:03,028 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:22:03,740 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:22:05,743 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:22:06,827 DEBUG   SystemMonitor:27409 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2023-05-29 19:22:06,832 DEBUG   SenderThread:27409 [sender.py:send():375] send: stats
+2023-05-29 19:22:06,847 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-29 19:22:06,850 DEBUG   SenderThread:27409 [sender.py:send():375] send: history
+2023-05-29 19:22:06,850 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: summary_record
+2023-05-29 19:22:06,851 INFO    SenderThread:27409 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-29 19:22:07,744 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/wandb-summary.json
+2023-05-29 19:22:07,744 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:22:08,126 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:22:09,745 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:22:11,746 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:22:13,323 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:22:13,393 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:22:13,394 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:22:13,747 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:22:15,752 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:22:17,755 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:22:18,357 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:22:20,759 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:22:22,760 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:22:23,402 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:22:24,761 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:22:26,762 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:22:28,394 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:22:28,394 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:22:28,483 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:22:28,763 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:22:30,764 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:22:32,766 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:22:33,601 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:22:34,766 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:22:36,767 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:22:36,833 DEBUG   SenderThread:27409 [sender.py:send():375] send: stats
+2023-05-29 19:22:38,749 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:22:38,769 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:22:40,770 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:22:42,771 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:22:43,394 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:22:43,395 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:22:43,843 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:22:44,772 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:22:46,773 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:22:48,774 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:22:49,053 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:22:50,775 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:22:50,987 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-29 19:22:50,990 DEBUG   SenderThread:27409 [sender.py:send():375] send: history
+2023-05-29 19:22:50,990 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: summary_record
+2023-05-29 19:22:51,008 INFO    SenderThread:27409 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-29 19:22:51,775 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/wandb-summary.json
+2023-05-29 19:22:52,776 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:22:54,053 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:22:54,779 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:22:56,780 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:22:58,184 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-29 19:22:58,186 DEBUG   SenderThread:27409 [sender.py:send():375] send: history
+2023-05-29 19:22:58,187 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: summary_record
+2023-05-29 19:22:58,187 INFO    SenderThread:27409 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-29 19:22:58,527 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:22:58,528 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:22:58,781 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/wandb-summary.json
+2023-05-29 19:22:58,781 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:22:59,182 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:23:00,782 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:23:02,783 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:23:04,386 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:23:04,784 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:23:06,785 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:23:06,835 DEBUG   SenderThread:27409 [sender.py:send():375] send: stats
+2023-05-29 19:23:08,786 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:23:09,458 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:23:10,787 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:23:12,788 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:23:13,440 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:23:13,440 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:23:14,513 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:23:14,790 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:23:16,791 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:23:18,792 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:23:19,565 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:23:20,793 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:23:22,796 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:23:24,640 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:23:24,797 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:23:26,798 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:23:28,439 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:23:28,440 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:23:28,799 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:23:29,645 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:23:30,804 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:23:32,805 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:23:34,806 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:23:35,282 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:23:36,838 DEBUG   SenderThread:27409 [sender.py:send():375] send: stats
+2023-05-29 19:23:40,840 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:23:43,438 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:23:43,438 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:23:44,810 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:23:45,876 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:23:46,812 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:23:48,813 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:23:50,814 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:23:50,958 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:23:52,815 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:23:54,816 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:23:56,056 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:23:56,817 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:23:58,438 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:23:58,439 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:23:58,818 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:00,820 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:01,178 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:24:02,821 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:04,822 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:06,328 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:24:06,823 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:06,840 DEBUG   SenderThread:27409 [sender.py:send():375] send: stats
+2023-05-29 19:24:08,824 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:10,825 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:11,406 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:24:12,826 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:13,438 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:24:13,438 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:24:14,827 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:16,545 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:24:16,828 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:18,829 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:20,093 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-29 19:24:20,096 DEBUG   SenderThread:27409 [sender.py:send():375] send: history
+2023-05-29 19:24:20,097 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: summary_record
+2023-05-29 19:24:20,098 INFO    SenderThread:27409 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-29 19:24:20,830 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/wandb-summary.json
+2023-05-29 19:24:20,831 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:21,699 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:24:22,831 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:24,834 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:26,702 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:24:26,835 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:27,046 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-29 19:24:27,048 DEBUG   SenderThread:27409 [sender.py:send():375] send: history
+2023-05-29 19:24:27,048 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: summary_record
+2023-05-29 19:24:27,049 INFO    SenderThread:27409 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-29 19:24:27,835 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/wandb-summary.json
+2023-05-29 19:24:28,439 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:24:28,440 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:24:28,836 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:30,837 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:31,720 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:24:32,838 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:34,839 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:36,783 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:24:36,843 DEBUG   SenderThread:27409 [sender.py:send():375] send: stats
+2023-05-29 19:24:36,845 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:38,845 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:40,846 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:41,832 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:24:42,847 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:43,438 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:24:43,439 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:24:44,848 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:46,849 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:46,957 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:24:48,850 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:50,851 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:52,069 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:24:52,852 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:54,854 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:56,855 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:24:57,205 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:24:58,439 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:24:58,440 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:24:58,856 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:00,857 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:02,208 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:25:02,858 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:04,859 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:06,846 DEBUG   SenderThread:27409 [sender.py:send():375] send: stats
+2023-05-29 19:25:06,860 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:07,294 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:25:08,861 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:10,862 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:12,358 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:25:12,863 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:12,971 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-29 19:25:12,973 DEBUG   SenderThread:27409 [sender.py:send():375] send: history
+2023-05-29 19:25:12,973 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: summary_record
+2023-05-29 19:25:12,975 INFO    SenderThread:27409 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-29 19:25:13,439 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:25:13,439 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:25:13,864 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/wandb-summary.json
+2023-05-29 19:25:14,864 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:16,865 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:17,360 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:25:18,867 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:19,988 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-29 19:25:19,990 DEBUG   SenderThread:27409 [sender.py:send():375] send: history
+2023-05-29 19:25:19,990 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: summary_record
+2023-05-29 19:25:19,991 INFO    SenderThread:27409 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-29 19:25:20,868 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/wandb-summary.json
+2023-05-29 19:25:20,868 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:22,450 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:25:22,869 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:24,870 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:26,871 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:27,638 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:25:28,439 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:25:28,440 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:25:28,872 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:30,873 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:32,648 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:25:32,874 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:34,875 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:36,848 DEBUG   SenderThread:27409 [sender.py:send():375] send: stats
+2023-05-29 19:25:36,882 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:37,793 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:25:38,884 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:40,885 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:42,794 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:25:42,886 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:43,442 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:25:43,443 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:25:44,887 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:46,888 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:47,889 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:25:48,891 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:50,892 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:52,893 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:52,926 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:25:54,896 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:56,897 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:25:58,065 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:25:58,441 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:25:58,442 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:25:58,898 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:26:00,899 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:26:02,900 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:26:03,602 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:26:04,901 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:26:06,851 DEBUG   SenderThread:27409 [sender.py:send():375] send: stats
+2023-05-29 19:26:08,853 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:26:13,441 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:26:13,442 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:26:13,877 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:26:14,906 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:26:16,907 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:26:18,908 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:26:18,917 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:26:20,909 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:26:22,910 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:26:23,995 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:26:24,911 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:26:26,912 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:26:28,440 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:26:28,441 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:26:28,913 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:26:29,122 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:26:30,914 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:26:32,916 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:26:34,300 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:26:34,918 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:26:36,854 DEBUG   SenderThread:27409 [sender.py:send():375] send: stats
+2023-05-29 19:26:36,919 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:26:38,920 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:26:39,426 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:26:40,925 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:26:42,927 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:26:43,138 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-29 19:26:43,140 DEBUG   SenderThread:27409 [sender.py:send():375] send: history
+2023-05-29 19:26:43,141 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: summary_record
+2023-05-29 19:26:43,143 INFO    SenderThread:27409 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-29 19:26:43,444 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:26:43,444 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:26:43,927 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/wandb-summary.json
+2023-05-29 19:26:44,520 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:26:44,928 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:26:46,929 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:26:48,930 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:26:49,545 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:26:50,281 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-29 19:26:50,283 DEBUG   SenderThread:27409 [sender.py:send():375] send: history
+2023-05-29 19:26:50,284 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: summary_record
+2023-05-29 19:26:50,284 INFO    SenderThread:27409 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-29 19:26:50,931 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/wandb-summary.json
+2023-05-29 19:26:50,931 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:26:52,932 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:26:54,620 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:26:54,933 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:26:56,934 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:26:58,441 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:26:58,442 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:26:58,935 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:26:59,710 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:27:00,936 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:27:02,937 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:27:04,939 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:27:04,949 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:27:06,856 DEBUG   SenderThread:27409 [sender.py:send():375] send: stats
+2023-05-29 19:27:06,940 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:27:08,941 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:27:10,034 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:27:10,942 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:27:12,943 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:27:13,442 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:27:13,443 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:27:14,944 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:27:15,061 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:27:16,945 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:27:18,946 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:27:20,154 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:27:20,947 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:27:22,948 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:27:24,949 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:27:25,293 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:27:26,950 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:27:28,443 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:27:28,444 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:27:28,951 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:27:30,369 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:27:30,953 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:27:32,954 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:27:34,954 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:27:35,520 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:27:36,481 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-29 19:27:36,484 DEBUG   SenderThread:27409 [sender.py:send():375] send: history
+2023-05-29 19:27:36,484 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: summary_record
+2023-05-29 19:27:36,486 INFO    SenderThread:27409 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-29 19:27:36,859 DEBUG   SenderThread:27409 [sender.py:send():375] send: stats
+2023-05-29 19:27:36,955 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/wandb-summary.json
+2023-05-29 19:27:36,956 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:27:38,956 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:27:40,583 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:27:40,957 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:27:42,958 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:27:43,465 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-29 19:27:43,467 DEBUG   SenderThread:27409 [sender.py:send():375] send: history
+2023-05-29 19:27:43,467 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:27:43,467 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: summary_record
+2023-05-29 19:27:43,469 INFO    SenderThread:27409 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-29 19:27:43,469 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:27:43,959 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/wandb-summary.json
+2023-05-29 19:27:44,959 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:27:45,643 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:27:46,960 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:27:48,961 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:27:50,704 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:27:50,962 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:27:52,964 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:27:54,965 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:27:55,858 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:27:56,966 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:27:58,447 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:27:58,448 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:27:58,967 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:28:00,968 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:28:01,003 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:28:02,969 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:28:04,970 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:28:06,160 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:28:06,861 DEBUG   SenderThread:27409 [sender.py:send():375] send: stats
+2023-05-29 19:28:06,971 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:28:08,972 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:28:10,974 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:28:11,172 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:28:12,975 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:28:13,448 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:28:13,449 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:28:14,976 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:28:16,260 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:28:16,977 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:28:18,978 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:28:20,979 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:28:21,325 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:28:22,980 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:28:24,982 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:28:26,411 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:28:26,982 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:28:28,455 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:28:28,455 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:28:28,983 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:28:30,984 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:28:31,537 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:28:32,986 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:28:36,740 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:28:36,864 DEBUG   SenderThread:27409 [sender.py:send():375] send: stats
+2023-05-29 19:28:41,866 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:28:43,449 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:28:43,449 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:28:44,991 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:28:46,992 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:28:47,005 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:28:48,994 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:28:50,996 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:28:52,050 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:28:52,997 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:28:54,998 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:28:56,999 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:28:57,184 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:28:58,448 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:28:58,449 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:28:59,000 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:01,001 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:02,345 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:29:03,002 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:05,003 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:06,672 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-29 19:29:06,675 DEBUG   SenderThread:27409 [sender.py:send():375] send: history
+2023-05-29 19:29:06,675 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: summary_record
+2023-05-29 19:29:06,677 INFO    SenderThread:27409 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-29 19:29:06,865 DEBUG   SenderThread:27409 [sender.py:send():375] send: stats
+2023-05-29 19:29:07,004 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/wandb-summary.json
+2023-05-29 19:29:07,005 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:07,478 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:29:09,005 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:11,007 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:12,584 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:29:13,008 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:13,545 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:29:13,546 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:29:13,638 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-29 19:29:13,639 DEBUG   SenderThread:27409 [sender.py:send():375] send: history
+2023-05-29 19:29:13,640 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: summary_record
+2023-05-29 19:29:13,640 INFO    SenderThread:27409 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-29 19:29:14,008 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/wandb-summary.json
+2023-05-29 19:29:15,009 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:17,010 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:17,605 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:29:19,011 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:21,012 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:22,738 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:29:23,013 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:25,014 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:27,015 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:27,902 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:29:28,465 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:29:28,465 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:29:29,016 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:31,017 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:32,914 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:29:33,018 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:35,019 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:36,867 DEBUG   SenderThread:27409 [sender.py:send():375] send: stats
+2023-05-29 19:29:37,020 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:38,057 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:29:39,021 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:41,022 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:43,023 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:43,167 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:29:43,465 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:29:43,465 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:29:45,024 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:47,025 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:48,327 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:29:49,026 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:51,027 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:53,028 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:53,455 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:29:55,029 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:57,031 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:58,455 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:29:58,483 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:29:58,484 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:29:59,032 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:29:59,788 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-29 19:29:59,792 DEBUG   SenderThread:27409 [sender.py:send():375] send: history
+2023-05-29 19:29:59,793 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: summary_record
+2023-05-29 19:29:59,794 INFO    SenderThread:27409 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-29 19:30:00,032 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/wandb-summary.json
+2023-05-29 19:30:01,033 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:03,034 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:03,563 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:30:05,035 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:06,804 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-29 19:30:06,806 DEBUG   SenderThread:27409 [sender.py:send():375] send: history
+2023-05-29 19:30:06,806 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: summary_record
+2023-05-29 19:30:06,807 INFO    SenderThread:27409 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-29 19:30:06,869 DEBUG   SenderThread:27409 [sender.py:send():375] send: stats
+2023-05-29 19:30:07,036 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/wandb-summary.json
+2023-05-29 19:30:07,036 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:08,580 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:30:09,037 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:11,037 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:13,039 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:13,471 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:30:13,471 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:30:13,642 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:30:15,041 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:17,042 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:18,834 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:30:19,043 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:21,044 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:23,045 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:23,843 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:30:25,046 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:27,049 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:28,471 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:30:28,472 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:30:28,919 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:30:29,049 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:31,051 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:33,052 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:34,018 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:30:35,053 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:36,872 DEBUG   SenderThread:27409 [sender.py:send():375] send: stats
+2023-05-29 19:30:37,054 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:39,055 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:39,090 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:30:41,056 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:43,057 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:43,472 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:30:43,472 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:30:44,109 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:30:45,058 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:47,059 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:49,060 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:49,196 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:30:51,061 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:53,062 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:54,223 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:30:55,063 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:57,064 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:58,482 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:30:58,482 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:30:59,065 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:30:59,255 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:31:01,066 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:31:03,067 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:31:05,248 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:31:06,875 DEBUG   SenderThread:27409 [sender.py:send():375] send: stats
+2023-05-29 19:31:10,877 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:31:13,071 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:31:13,477 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:31:13,478 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:31:15,072 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:31:15,941 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:31:17,074 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:31:19,075 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:31:20,948 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:31:21,076 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:31:23,077 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:31:25,078 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:31:26,057 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:31:27,079 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:31:27,450 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-29 19:31:27,453 DEBUG   SenderThread:27409 [sender.py:send():375] send: history
+2023-05-29 19:31:27,454 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: summary_record
+2023-05-29 19:31:27,454 INFO    SenderThread:27409 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-29 19:31:28,079 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/wandb-summary.json
+2023-05-29 19:31:28,478 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:31:28,478 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:31:29,080 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:31:31,075 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:31:31,081 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:31:33,082 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:31:34,416 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-29 19:31:34,418 DEBUG   SenderThread:27409 [sender.py:send():375] send: history
+2023-05-29 19:31:34,419 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: summary_record
+2023-05-29 19:31:34,419 INFO    SenderThread:27409 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-29 19:31:35,083 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/wandb-summary.json
+2023-05-29 19:31:35,084 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:31:36,258 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:31:36,877 DEBUG   SenderThread:27409 [sender.py:send():375] send: stats
+2023-05-29 19:31:37,084 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:31:39,086 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:31:41,449 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:31:42,087 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:31:43,478 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:31:43,478 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:31:44,089 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:31:46,090 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:31:46,620 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:31:48,091 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:31:50,095 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:31:51,744 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:31:52,096 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:31:54,097 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:31:56,098 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:31:56,780 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:31:58,099 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:31:58,517 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:31:58,518 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:32:00,100 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:01,926 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:32:02,102 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:04,104 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:06,105 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:06,879 DEBUG   SenderThread:27409 [sender.py:send():375] send: stats
+2023-05-29 19:32:06,995 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:32:08,107 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:10,107 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:12,108 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:12,125 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:32:13,478 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:32:13,478 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:32:14,109 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:16,110 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:17,139 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:32:18,111 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:20,112 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:21,175 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-29 19:32:21,178 DEBUG   SenderThread:27409 [sender.py:send():375] send: history
+2023-05-29 19:32:21,179 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: summary_record
+2023-05-29 19:32:21,180 INFO    SenderThread:27409 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-29 19:32:22,113 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/wandb-summary.json
+2023-05-29 19:32:22,114 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:22,243 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:32:24,114 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:26,117 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:27,467 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:32:28,117 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:28,147 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: partial_history
+2023-05-29 19:32:28,150 DEBUG   SenderThread:27409 [sender.py:send():375] send: history
+2023-05-29 19:32:28,150 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: summary_record
+2023-05-29 19:32:28,151 INFO    SenderThread:27409 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-29 19:32:28,486 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:32:28,487 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:32:29,118 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/wandb-summary.json
+2023-05-29 19:32:30,118 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:32,120 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:32,650 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:32:34,121 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:36,122 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:36,882 DEBUG   SenderThread:27409 [sender.py:send():375] send: stats
+2023-05-29 19:32:37,828 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:32:38,123 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:40,125 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:42,126 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:42,850 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:32:43,486 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:32:43,486 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:32:44,127 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:46,128 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:48,020 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:32:48,129 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:50,130 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:52,132 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:53,082 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:32:54,135 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:56,136 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:58,137 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:32:58,260 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:32:58,486 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-29 19:32:58,487 DEBUG   SenderThread:27409 [sender.py:send_request():402] send_request: stop_status
+2023-05-29 19:33:00,138 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:33:02,140 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:33:03,338 DEBUG   HandlerThread:27409 [handler.py:handle_request():144] handle_request: status_report
+2023-05-29 19:33:04,141 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:33:06,142 INFO    Thread-12 :27409 [dir_watcher.py:_on_file_modified():295] file/dir modified: /workspace/jordan/Span-Selection/wandb/run-20230529_192106-na83jqvx/files/output.log
+2023-05-29 19:33:06,885 DEBUG   SenderThread:27409 [sender.py:send():375] send: stats

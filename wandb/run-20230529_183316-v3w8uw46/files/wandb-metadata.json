@@ -1,0 +1,258 @@
+{
+    "os": "Linux-4.15.0-210-generic-x86_64-with-glibc2.17",
+    "python": "3.8.16",
+    "heartbeatAt": "2023-05-29T10:33:17.571865",
+    "startedAt": "2023-05-29T10:33:16.922511",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--data_dir",
+        "/workspace/jordan/Span-Selection/download//conll",
+        "--model_type",
+        "roberta",
+        "--model_name_or_path",
+        "roberta-base",
+        "--output_dir",
+        "/workspace/jordan/Span-Selection/outputs//conll/roberta-base-lr1e-5-epoch40-warmup800-bsz32-bepoch1-seed1",
+        "--log_file",
+        "/workspace/jordan/Span-Selection/outputs//conll/roberta-base-lr1e-5-epoch40-warmup800-bsz32-bepoch1-seed1/train.log",
+        "--labels",
+        "/workspace/jordan/Span-Selection/download//conll/labels.txt",
+        "--eval_test_set",
+        "--do_train",
+        "--do_eval",
+        "--batch_size",
+        "32",
+        "--eval_batch_size",
+        "32",
+        "--gradient_accumulation_steps",
+        "1",
+        "--mlp_hidden_size",
+        "256",
+        "--mlp_dropout_rate",
+        "0.2",
+        "--learning_rate",
+        "1e-5",
+        "--num_train_epochs",
+        "40",
+        "--save_steps",
+        "200",
+        "--warmup_steps",
+        "800",
+        "--overwrite_output_dir",
+        "--seed",
+        "1",
+        "--select_begin_epoch",
+        "1",
+        "--neg_sample_rate",
+        "0.35",
+        "--pbegin_f1",
+        "0.6",
+        "--select_positive",
+        "--select_negative"
+    ],
+    "state": "running",
+    "program": "/workspace/jordan/Span-Selection/main.py",
+    "codePath": "main.py",
+    "git": {
+        "remote": "https://github.com/jordddan/better-span-selection.git",
+        "commit": "2970832284269098c8b8ac7e0e567adb78b05ef1"
+    },
+    "email": "1192787158@qq.com",
+    "root": "/workspace/jordan/Span-Selection",
+    "host": "GCR-OPENPAI-07",
+    "username": "root",
+    "executable": "/opt/conda/envs/visgpt/bin/python",
+    "cpu_count": 28,
+    "cpu_count_logical": 28,
+    "cpu_freq": {
+        "current": 1415.7183571428575,
+        "min": 1200.0,
+        "max": 3500.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 1197.276,
+            "min": 1200.0,
+            "max": 3500.0
+        },
+        {
+            "current": 1297.294,
+            "min": 1200.0,
+            "max": 3500.0
+        },
+        {
+            "current": 1197.426,
+            "min": 1200.0,
+            "max": 3500.0
+        },
+        {
+            "current": 2028.343,
+            "min": 1200.0,
+            "max": 3500.0
+        },
+        {
+            "current": 1850.946,
+            "min": 1200.0,
+            "max": 3500.0
+        },
+        {
+            "current": 1197.325,
+            "min": 1200.0,
+            "max": 3500.0
+        },
+        {
+            "current": 1197.264,
+            "min": 1200.0,
+            "max": 3500.0
+        },
+        {
+            "current": 1197.313,
+            "min": 1200.0,
+            "max": 3500.0
+        },
+        {
+            "current": 1293.316,
+            "min": 1200.0,
+            "max": 3500.0
+        },
+        {
+            "current": 1197.285,
+            "min": 1200.0,
+            "max": 3500.0
+        },
+        {
+            "current": 1494.236,
+            "min": 1200.0,
+            "max": 3500.0
+        },
+        {
+            "current": 1197.222,
+            "min": 1200.0,
+            "max": 3500.0
+        },
+        {
+            "current": 1197.218,
+            "min": 1200.0,
+            "max": 3500.0
+        },
+        {
+            "current": 1197.232,
+            "min": 1200.0,
+            "max": 3500.0
+        },
+        {
+            "current": 1197.407,
+            "min": 1200.0,
+            "max": 3500.0
+        },
+        {
+            "current": 1297.089,
+            "min": 1200.0,
+            "max": 3500.0
+        },
+        {
+            "current": 1197.271,
+            "min": 1200.0,
+            "max": 3500.0
+        },
+        {
+            "current": 1297.037,
+            "min": 1200.0,
+            "max": 3500.0
+        },
+        {
+            "current": 1197.201,
+            "min": 1200.0,
+            "max": 3500.0
+        },
+        {
+            "current": 1197.301,
+            "min": 1200.0,
+            "max": 3500.0
+        },
+        {
+            "current": 3400.032,
+            "min": 1200.0,
+            "max": 3500.0
+        },
+        {
+            "current": 1275.977,
+            "min": 1200.0,
+            "max": 3500.0
+        },
+        {
+            "current": 1197.224,
+            "min": 1200.0,
+            "max": 3500.0
+        },
+        {
+            "current": 1197.22,
+            "min": 1200.0,
+            "max": 3500.0
+        },
+        {
+            "current": 1506.123,
+            "min": 1200.0,
+            "max": 3500.0
+        },
+        {
+            "current": 3191.783,
+            "min": 1200.0,
+            "max": 3500.0
+        },
+        {
+            "current": 2485.336,
+            "min": 1200.0,
+            "max": 3500.0
+        },
+        {
+            "current": 1197.395,
+            "min": 1200.0,
+            "max": 3500.0
+        }
+    ],
+    "disk": {
+        "total": 1758.8579597473145,
+        "used": 571.731819152832
+    },
+    "gpu": "Tesla V100-PCIE-32GB",
+    "gpu_count": 8,
+    "gpu_devices": [
+        {
+            "name": "Tesla V100-PCIE-32GB",
+            "memory_total": 34089730048
+        },
+        {
+            "name": "Tesla V100-PCIE-32GB",
+            "memory_total": 34089730048
+        },
+        {
+            "name": "Tesla V100-PCIE-32GB",
+            "memory_total": 34089730048
+        },
+        {
+            "name": "Tesla V100-PCIE-32GB",
+            "memory_total": 34089730048
+        },
+        {
+            "name": "Tesla V100-PCIE-32GB",
+            "memory_total": 34089730048
+        },
+        {
+            "name": "Tesla V100-PCIE-32GB",
+            "memory_total": 34089730048
+        },
+        {
+            "name": "Tesla V100-PCIE-32GB",
+            "memory_total": 34089730048
+        },
+        {
+            "name": "Tesla V100-PCIE-32GB",
+            "memory_total": 34089730048
+        }
+    ],
+    "memory": {
+        "total": 503.7808952331543
+    }
+}

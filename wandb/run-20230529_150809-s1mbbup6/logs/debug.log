@@ -24,3 +24,4 @@ config: {'data_dir': '/workspace/jordan/Span-Selection/download//conll', 'model_
 2023-05-29 15:08:16,379 INFO    MainThread:18931 [wandb_run.py:_redirect():2078] Wrapping output streams.
 2023-05-29 15:08:16,379 INFO    MainThread:18931 [wandb_run.py:_redirect():2103] Redirects installed.
 2023-05-29 15:08:16,380 INFO    MainThread:18931 [wandb_init.py:init():829] run started, returning control to user process
+2023-05-29 16:41:20,447 WARNING MsgRouterThr:18931 [router.py:message_loop():77] message_loop has been closed

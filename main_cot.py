@@ -64,8 +64,9 @@ class Trainer:
 
         self.wandb_config = self.get_wandb_config()
 
-        wandb.init(project=f"NER-{args.task}-seed{args.seed}", config=self.wandb_config)
-
+        wandb.init(project=f"EMNLP-NER", config=self.wandb_config, name=f"COT-{args.task}-seed{args.seed}")
+        wandb.define_metric("f1-dev", summary="max")
+        wandb.define_metric("f1-test", summary="max")
     def get_wandb_config(self):
         args = self.args
         args_dict = {}

@@ -1,0 +1,27 @@
+2023-05-29 18:33:25,233 INFO    MainThread:7962 [wandb_setup.py:_flush():76] Current SDK version is 0.15.3
+2023-05-29 18:33:25,233 INFO    MainThread:7962 [wandb_setup.py:_flush():76] Configure stats pid to 7962
+2023-05-29 18:33:25,233 INFO    MainThread:7962 [wandb_setup.py:_flush():76] Loading settings from /root/.config/wandb/settings
+2023-05-29 18:33:25,233 INFO    MainThread:7962 [wandb_setup.py:_flush():76] Loading settings from /workspace/jordan/Span-Selection/wandb/settings
+2023-05-29 18:33:25,233 INFO    MainThread:7962 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2023-05-29 18:33:25,233 INFO    MainThread:7962 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2023-05-29 18:33:25,233 INFO    MainThread:7962 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'main.py', 'program': '/workspace/jordan/Span-Selection/main.py'}
+2023-05-29 18:33:25,233 INFO    MainThread:7962 [wandb_init.py:_log_setup():507] Logging user logs to /workspace/jordan/Span-Selection/wandb/run-20230529_183325-p4i5jgrw/logs/debug.log
+2023-05-29 18:33:25,234 INFO    MainThread:7962 [wandb_init.py:_log_setup():508] Logging internal logs to /workspace/jordan/Span-Selection/wandb/run-20230529_183325-p4i5jgrw/logs/debug-internal.log
+2023-05-29 18:33:25,234 INFO    MainThread:7962 [wandb_init.py:init():547] calling init triggers
+2023-05-29 18:33:25,234 INFO    MainThread:7962 [wandb_init.py:init():554] wandb.init called with sweep_config: {}
+config: {'data_dir': '/workspace/jordan/Span-Selection/download//conll', 'model_type': 'roberta', 'model_name_or_path': 'roberta-base', 'output_dir': '/workspace/jordan/Span-Selection/outputs//conll/roberta-base-lr1e-5-epoch40-warmup800-bsz32-bepoch1-seed3', 'log_file': '/workspace/jordan/Span-Selection/outputs//conll/roberta-base-lr1e-5-epoch40-warmup800-bsz32-bepoch1-seed3/train.log', 'task': 'conll', 'labels': '/workspace/jordan/Span-Selection/download//conll/labels.txt', 'max_seq_length': 128, 'do_lower_case': False, 'eval_test_set': True, 'do_train': True, 'do_eval': True, 'batch_size': 32, 'eval_batch_size': 32, 'gradient_accumulation_steps': 1, 'mlp_hidden_size': 256, 'mlp_dropout_rate': 0.2, 'learning_rate': 1e-05, 'weight_decay': 0.01, 'adam_epsilon': 1e-08, 'max_grad_norm': 1.0, 'num_train_epochs': 40.0, 'save_steps': 200, 'warmup_steps': 800, 'overwrite_output_dir': True, 'seed': 3, 'neg_sample_rate': 0.35, 'select_begin_epoch': 1, 'pbegin_f1': 0.6, 'select_positive': True, 'select_negative': True, 'device': device(type='cuda')}
+2023-05-29 18:33:25,235 INFO    MainThread:7962 [wandb_init.py:init():596] starting backend
+2023-05-29 18:33:25,235 INFO    MainThread:7962 [wandb_init.py:init():600] setting up manager
+2023-05-29 18:33:25,239 INFO    MainThread:7962 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2023-05-29 18:33:25,241 INFO    MainThread:7962 [wandb_init.py:init():606] backend started and connected
+2023-05-29 18:33:25,250 INFO    MainThread:7962 [wandb_init.py:init():700] updated telemetry
+2023-05-29 18:33:25,316 INFO    MainThread:7962 [wandb_init.py:init():737] communicating run to backend with 60.0 second timeout
+2023-05-29 18:33:25,576 INFO    MainThread:7962 [wandb_run.py:_on_init():2177] communicating current version
+2023-05-29 18:33:25,642 INFO    MainThread:7962 [wandb_run.py:_on_init():2186] got version response 
+2023-05-29 18:33:25,642 INFO    MainThread:7962 [wandb_init.py:init():787] starting run threads in backend
+2023-05-29 18:33:32,232 INFO    MainThread:7962 [wandb_run.py:_console_start():2158] atexit reg
+2023-05-29 18:33:32,233 INFO    MainThread:7962 [wandb_run.py:_redirect():2013] redirect: SettingsConsole.WRAP_RAW
+2023-05-29 18:33:32,233 INFO    MainThread:7962 [wandb_run.py:_redirect():2078] Wrapping output streams.
+2023-05-29 18:33:32,234 INFO    MainThread:7962 [wandb_run.py:_redirect():2103] Redirects installed.
+2023-05-29 18:33:32,235 INFO    MainThread:7962 [wandb_init.py:init():829] run started, returning control to user process
+2023-05-29 19:20:29,215 WARNING MsgRouterThr:7962 [router.py:message_loop():77] message_loop has been closed

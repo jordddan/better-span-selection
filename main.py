@@ -15,6 +15,7 @@ from torch.utils.data import DataLoader, TensorDataset
 from torch.nn import CrossEntropyLoss
 from tqdm import tqdm, trange
 from seqeval.metrics import precision_score, recall_score, f1_score
+import wandb
 
 from transformers import (
     AdamW,
@@ -57,7 +58,19 @@ class Trainer:
         self.label_list = label_list
         self.pad_token_label_id = CrossEntropyLoss().ignore_index
         self.o_conf = None
+        self.wandb_config = self.get_wandb_config()
 
+        wandb.init(project=f"EMNLP-NER", config=self.wandb_config, name=f"single-{args.task}-seed{args.seed}")
+        wandb.define_metric("f1-dev", summary="max")
+        wandb.define_metric("f1-test", summary="max")
+    def get_wandb_config(self):
+        args = self.args
+        args_dict = {}
+        for arg in vars(args):
+            args_dict[arg] = getattr(args, arg)
+        
+        return args_dict
+    
     def train(self):
         train_dataloader = DataLoader(self.train_dataset, batch_size=self.args.batch_size, shuffle=True, collate_fn=lambda x: x)
         t_total = len(train_dataloader) // self.args.gradient_accumulation_steps * self.args.num_train_epochs
@@ -108,9 +121,11 @@ class Trainer:
                     if global_steps % self.args.save_steps == 0:
                         result, _ = self.evaluate(mode="dev", prefix=global_steps)
                         logger.info(", ".join("%s: %s" % item for item in result.items()))
+                        wandb.log({"f1-dev":result["f1"]})
                         if self.args.eval_test_set:
                             result, _ = self.evaluate(mode="test", prefix="test")
                             logger.info(", ".join("%s: %s" % item for item in result.items()))
+                            wandb.log({"f1-test":result["f1"]})
                         if result["f1"] > best_score:
                             logger.info("result['f1']={} > best_score={}".format(result["f1"], best_score))
                             best_score = result["f1"]
@@ -386,7 +401,8 @@ def main():
     parser.add_argument("--model_name_or_path", default="bert-base-multilingual-cased", type=str)
     parser.add_argument("--output_dir", default="", type=str)
     parser.add_argument("--log_file", default="train.log", type=str)
-    
+    parser.add_argument("--task", default="conll", type=str)
+
     parser.add_argument("--labels", default="", type=str)
     parser.add_argument("--max_seq_length", default=128, type=int)
     
