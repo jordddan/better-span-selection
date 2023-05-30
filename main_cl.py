@@ -15,7 +15,6 @@ from torch.utils.data import DataLoader, TensorDataset
 from torch.nn import CrossEntropyLoss
 from tqdm import tqdm, trange
 from seqeval.metrics import precision_score, recall_score, f1_score
-
 import wandb
 
 from transformers import (
@@ -29,7 +28,7 @@ from transformers import (
     RobertaTokenizer,
 )
 
-from model import BertNegSampleForTokenClassification, RobertaNegSampleForTokenClassification
+from model import BertNegSampleForTokenClassification, RobertaNegSampleForTokenClassificationCL
 
 from data import *
 
@@ -38,22 +37,20 @@ logger = logging.getLogger(__name__)
 
 MODEL_CLASSES = {
   "bert": (BertConfig, BertNegSampleForTokenClassification, BertTokenizer),
-  "roberta": (RobertaConfig, RobertaNegSampleForTokenClassification, RobertaTokenizer),
+  "roberta": (RobertaConfig, RobertaNegSampleForTokenClassificationCL, RobertaTokenizer),
 }
 
 class Trainer:
     def __init__(self, 
                  args, 
-                 model1, 
-                 model2,
+                 model, 
                  tokenizer, 
                  label_list, 
                  train_dataset=None, 
                  dev_dataset=None, 
                  test_dataset=None):
         self.args = args
-        self.model1 = model1
-        self.model2 = model2 
+        self.model = model
         self.tokenizer = tokenizer
         self.train_dataset = train_dataset
         self.dev_dataset = dev_dataset
@@ -61,14 +58,10 @@ class Trainer:
         self.label_list = label_list
         self.pad_token_label_id = CrossEntropyLoss().ignore_index
         self.o_conf = None
-
         self.wandb_config = self.get_wandb_config()
-
-        wandb.init(project=f"EMNLP-NER", config=self.wandb_config, name=f"COT-PLUS-{args.model_name_or_path}-{args.task}-seed{args.seed}")
-        wandb.define_metric("f1-dev1", summary="max")
-        wandb.define_metric("f1-test1", summary="max")
-        wandb.define_metric("f1-dev2", summary="max")
-        wandb.define_metric("f1-test2", summary="max")
+        wandb.init(project=f"EMNLP-NER-CL", config=self.wandb_config, name=f"CL-{args.task}-seed{args.seed}")
+        wandb.define_metric("f1-dev", summary="max")
+        wandb.define_metric("f1-test", summary="max")
     def get_wandb_config(self):
         args = self.args
         args_dict = {}
@@ -76,27 +69,19 @@ class Trainer:
             args_dict[arg] = getattr(args, arg)
         
         return args_dict
-
-
+    
     def train(self):
         train_dataloader = DataLoader(self.train_dataset, batch_size=self.args.batch_size, shuffle=True, collate_fn=lambda x: x)
         t_total = len(train_dataloader) // self.args.gradient_accumulation_steps * self.args.num_train_epochs
         
         no_decay = ["bias", "LayerNorm.weight"]
-        optimizer_grouped_parameters1 = [
-            {"params": [p for n, p in self.model1.named_parameters() if not any(nd in n for nd in no_decay)], "weight_decay": self.args.weight_decay},
-            {"params": [p for n, p in self.model1.named_parameters() if any(nd in n for nd in no_decay)], "weight_decay": 0.0}
+        optimizer_grouped_parameters = [
+            {"params": [p for n, p in self.model.named_parameters() if not any(nd in n for nd in no_decay)], "weight_decay": self.args.weight_decay},
+            {"params": [p for n, p in self.model.named_parameters() if any(nd in n for nd in no_decay)], "weight_decay": 0.0}
         ]
-        optimizer_grouped_parameters2 = [
-            {"params": [p for n, p in self.model2.named_parameters() if not any(nd in n for nd in no_decay)], "weight_decay": self.args.weight_decay},
-            {"params": [p for n, p in self.model2.named_parameters() if any(nd in n for nd in no_decay)], "weight_decay": 0.0}
-        ]
-        optimizer1 = AdamW(optimizer_grouped_parameters1, lr=self.args.learning_rate, eps=self.args.adam_epsilon)
-        optimizer2 = AdamW(optimizer_grouped_parameters2, lr=self.args.learning_rate, eps=self.args.adam_epsilon)
-
-        scheduler1 = get_linear_schedule_with_warmup(optimizer1, num_warmup_steps=self.args.warmup_steps, num_training_steps=t_total)
-        scheduler2 = get_linear_schedule_with_warmup(optimizer2, num_warmup_steps=self.args.warmup_steps, num_training_steps=t_total)
-
+        optimizer = AdamW(optimizer_grouped_parameters, lr=self.args.learning_rate, eps=self.args.adam_epsilon)
+        
+        scheduler = get_linear_schedule_with_warmup(optimizer, num_warmup_steps=self.args.warmup_steps, num_training_steps=t_total)
         logger.info("***** Running training *****")
         logger.info("  Num examples = %d", len(self.train_dataset))
         logger.info("  Num Epochs = %d", self.args.num_train_epochs)
@@ -105,11 +90,9 @@ class Trainer:
         logger.info("  Gradient Accumulation steps = %d", self.args.gradient_accumulation_steps)
         logger.info("  Total optimization steps = %d", t_total)
         
-        best_score1 = 0.0
-        best_score2 = 0.0
+        best_score = 0.0
         global_steps = 0
-        self.model1.zero_grad()
-        self.model2.zero_grad()
+        self.model.zero_grad()
         train_iterator = trange(int(self.args.num_train_epochs), desc="Epoch")
         
         for epoch in train_iterator:
@@ -119,73 +102,48 @@ class Trainer:
                 self.build_conf_mat()
                 # self.god_eval()
             for step, batch_examples in enumerate(epoch_iterator):
-                batch1 = self.convert_examples_to_features(batch_examples, training=True, is_select=is_select, flag=1)
-                batch2 = self.convert_examples_to_features(batch_examples, training=True, is_select=is_select, flag=2)
-
-                self.model1.train()
-                self.model2.train()
-                batch1 = {key: value.to(self.args.device) for key, value in batch1.items()}
-                batch2 = {key: value.to(self.args.device) for key, value in batch2.items()}
-
-                loss1 = self.model2(**batch1).loss
-                loss2 = self.model1(**batch2).loss
+                batch = self.convert_examples_to_features(batch_examples, training=True, is_select=is_select)
+                self.model.train()
+                batch = {key: value.to(self.args.device) for key, value in batch.items()}
+                loss = self.model(**batch).loss
+                
                 if self.args.gradient_accumulation_steps > 1:
-                    loss1 = loss1 / self.args.gradient_accumulation_steps
-                    loss2 = loss2 / self.args.gradient_accumulation_steps
-                loss1.backward()
-                loss2.backward()
+                    loss = loss / self.args.gradient_accumulation_steps
+                loss.backward()
                 if (step + 1) % self.args.gradient_accumulation_steps == 0:
                     global_steps += 1
-                    torch.nn.utils.clip_grad_norm_(self.model1.parameters(), self.args.max_grad_norm)
-                    torch.nn.utils.clip_grad_norm_(self.model2.parameters(), self.args.max_grad_norm)
-                    scheduler1.step()  # Update learning rate schedule
-                    optimizer1.step()
-                    scheduler2.step()
-                    optimizer2.step()
-                    self.model1.zero_grad()
-                    self.model2.zero_grad()
+                    torch.nn.utils.clip_grad_norm_(self.model.parameters(), self.args.max_grad_norm)
+                    scheduler.step()  # Update learning rate schedule
+                    optimizer.step()
+                    self.model.zero_grad()
                     
                     if global_steps % self.args.save_steps == 0:
-                        self.build_conf_mat()
-                        result1, _ = self.evaluate(self.model1, mode="dev", prefix=global_steps)
-                        logger.info(", ".join("%s: %s" % item for item in result1.items()))
-                        wandb.log({"f1-dev1":result1["f1"]})
-                        result2, _ = self.evaluate(self.model2, mode="dev", prefix=global_steps)
-                        logger.info(", ".join("%s: %s" % item for item in result2.items()))
-                        wandb.log({"f1-dev2":result2["f1"]})
+                        result, _ = self.evaluate(mode="dev", prefix=global_steps)
+                        logger.info(", ".join("%s: %s" % item for item in result.items()))
+                        wandb.log({"f1-dev":result["f1"]})
                         if self.args.eval_test_set:
-                            result1, _ = self.evaluate(self.model1, mode="test", prefix="test")
-                            wandb.log({"f1-test1":result1["f1"]})
-                            logger.info(", ".join("%s: %s" % item for item in result1.items()))
-                            result2, _ = self.evaluate(self.model2, mode="test", prefix="test")
-                            wandb.log({"f1-test2":result2["f1"]})
-                            logger.info(", ".join("%s: %s" % item for item in result2.items()))
-
-                        if result1["f1"] > best_score1:
-                            logger.info("result1['f1']={} > best_score1={}".format(result1["f1"], best_score1))
-                            best_score1 = result1["f1"]
+                            result, _ = self.evaluate(mode="test", prefix="test")
+                            logger.info(", ".join("%s: %s" % item for item in result.items()))
+                            wandb.log({"f1-test":result["f1"]})
+                        if result["f1"] > best_score:
+                            logger.info("result['f1']={} > best_score={}".format(result["f1"], best_score))
+                            best_score = result["f1"]
                             # Save the best model checkpoint
                             output_dir = os.path.join(self.args.output_dir, "checkpoint-best")
                             if not os.path.exists(output_dir):
                                 os.makedirs(output_dir)
-                            torch.save(self.args, os.path.join(output_dir, "training_args1.bin"))
+                            
+                            model_to_save = self.model
+                            model_to_save.save_pretrained(output_dir)
+                            torch.save(self.args, os.path.join(output_dir, "training_args.bin"))
                             logger.info("Saving the best model checkpoint to %s", output_dir)
+                            
+        logger.info("Saving model checkpoint to %s", self.args.output_dir)
+        model_to_save = self.model.module if hasattr(self.model, "module") else self.model
+        model_to_save.save_pretrained(self.args.output_dir)
+        self.tokenizer.save_pretrained(self.args.output_dir)
 
-                        if result2["f1"] > best_score2:
-                            logger.info("result1['f1']={} > best_score1={}".format(result2["f1"], best_score2))
-                            best_score2 = result2["f1"]
-                            # Save the best model checkpoint
-                            output_dir = os.path.join(self.args.output_dir, "checkpoint-best")
-                            if not os.path.exists(output_dir):
-                                os.makedirs(output_dir)
-                            torch.save(self.args, os.path.join(output_dir, "training_arg2.bin"))
-                            logger.info("Saving the best model checkpoint to %s", output_dir)
-        # logger.info("Saving model checkpoint to %s", self.args.output_dir)
-        # model_to_save = self.model.module if hasattr(self.model, "module") else self.model
-        # model_to_save.save_pretrained(self.args.output_dir)
-        # self.tokenizer.save_pretrained(self.args.output_dir)
-
-    def convert_examples_to_features(self, examples, training=False, is_select=False, flag = 1):
+    def convert_examples_to_features(self, examples, training=False, is_select=False):
         batch_input_ids, batch_input_mask, batch_start_pos = [], [], []
         label_map = {label: i for i, label in enumerate(self.label_list)}
         sentence_length = [len(example.words) for example in examples]
@@ -232,7 +190,7 @@ class Trainer:
         if not training:
             return eval_batch
         
-        batch_positive_samples, batch_sample_candidates_correct, batch_sample_candidates_potential = self.posnegsample_select(flag, examples, is_select)
+        batch_positive_samples, batch_sample_candidates_correct, batch_sample_candidates_potential = self.posnegsample_select(examples, is_select)
         
         batch_label_spans = []
         for ex_index, (positive_samples, sample_candidates_c, sample_candidates_p) in enumerate(zip(batch_positive_samples, batch_sample_candidates_correct, batch_sample_candidates_potential)):
@@ -261,7 +219,7 @@ class Trainer:
         return train_batch
 
 
-    def evaluate(self, model, mode, prefix=""):
+    def evaluate(self, mode, prefix=""):
         if mode == "dev":
             eval_dataset = self.dev_dataset
         elif mode == "test":
@@ -273,15 +231,15 @@ class Trainer:
         logger.info("  Num examples = %d", len(eval_dataset))
         logger.info("  Batch size = %d", self.args.eval_batch_size)
         all_pred_spans = []
-        model.eval()
+        self.model.eval()
         for batch_examples in tqdm(eval_dataloader, desc="Evaluating"):
             batch = self.convert_examples_to_features(batch_examples)
             batch = {key: value.to(self.args.device) for key, value in batch.items() if value is not None}
             
             with torch.no_grad():
-                batch_logits_mat = model(**batch).logits
-
-            batch_logits_mat = batch_logits_mat.detach() 
+                batch_logits_mat = self.model(**batch).logits
+                
+            batch_logits_mat = batch_logits_mat.detach()
             
             for example, logits_mat in zip(batch_examples, batch_logits_mat):
                 pred_spans = self.convert_logits_to_preds(logits_mat, example.length)
@@ -302,7 +260,7 @@ class Trainer:
             "recall": recall_score(all_bio_labels, all_bio_preds),
         }
         return results, all_bio_preds
-
+    
     def convert_logits_to_preds(self, logits_mat, length):
         conf_table, index_table = torch.max(logits_mat, dim=-1)
         conf_table = conf_table.cpu().numpy()
@@ -322,7 +280,7 @@ class Trainer:
                 final_spans.append(span)
         return final_spans
     
-    def posnegsample_select(self, flag, examples, is_selct):
+    def posnegsample_select(self, examples, is_selct):
         label_map = {label: i for i, label in enumerate(self.label_list)}
         batch_size = len(examples)
         positive_samples = [[] for _ in range(batch_size)]
@@ -335,13 +293,10 @@ class Trainer:
             
             for span_b, span_e, span_label in example.label_spans:
                 label_span_mat[span_b, span_e] = 2
-                if flag == 1: 
-                    mat = example.conf_mat1
-                else:
-                    mat = example.conf_mat2
-                if not is_selct or mat[span_b, span_e]:
+                if not is_selct or example.conf_mat[span_b, span_e]:
                     positive_samples[ex_index].append((span_b, span_e, label_map[span_label]))
                     continue
+                    
             tmp_span_list = [(-1, -1, -1)] + example.label_spans + [(example.length, example.length, -1)]
             for span_id in range(1, len(tmp_span_list)):
                 empty_l = tmp_span_list[span_id - 1][1] + 1
@@ -358,11 +313,7 @@ class Trainer:
                     if label_span_mat[l, r] == 0:
                         sample_candidates_correct[ex_index].append((l, r))
                     else:
-                        if flag == 1:
-                            mat = example.conf_mat1
-                        else:
-                            mat = example.conf_mat2
-                        if not is_selct or mat[l, r]:
+                        if not is_selct or example.conf_mat[l, r]:
                             sample_candidates_potential[ex_index].append((l, r))
         return positive_samples, sample_candidates_correct, sample_candidates_potential
         
@@ -375,99 +326,59 @@ class Trainer:
         logger.info("  Num examples = %d", len(dataset))
         logger.info("  Batch size = %d", self.args.eval_batch_size)
         
-        all_logits_mat1 = []
-        all_logits_mat2 = []
-        self.model1.eval()
-        self.model2.eval()
+        all_logits_mat = []
+        self.model.eval()
         for batch_examples in tqdm(eval_dataloader, desc="Evaluating"):
             batch = self.convert_examples_to_features(batch_examples)
             batch = {key: value.to(self.args.device) for key, value in batch.items() if value is not None}
             with torch.no_grad():
-                batch_logits_mat1 = self.model1(**batch).logits
-                batch_logits_mat2 = self.model2(**batch).logits
-            batch_logits_mat1 = batch_logits_mat1.detach().cpu()
-            batch_logits_mat2 = batch_logits_mat2.detach().cpu()
-            for example, logits_mat in zip(batch_examples, batch_logits_mat1):
-                all_logits_mat1.append(logits_mat[:example.length, :example.length])
-            for example, logits_mat in zip(batch_examples, batch_logits_mat2):
-                all_logits_mat2.append(logits_mat[:example.length, :example.length])
+                batch_logits_mat = self.model(**batch).logits
+            batch_logits_mat = batch_logits_mat.detach().cpu()
+            for example, logits_mat in zip(batch_examples, batch_logits_mat):
+                all_logits_mat.append(logits_mat[:example.length, :example.length])
                 
         # conf mat init
         for example in dataset:
-            example.conf_mat1 = np.ones((example.length, example.length), dtype=bool)
-            example.conf_mat2 = np.ones((example.length, example.length), dtype=bool)
+            example.conf_mat = np.ones((example.length, example.length), dtype=bool)
         
         
         if self.args.select_positive:
-            conf_list1 = []
-            label_list1 = []
-            pred_list1 = []
-            conf_list2 = []
-            label_list2 = []
-            pred_list2 = []
-
-            for ex_index, (example, logits_mat) in enumerate(zip(dataset, all_logits_mat1)):
+            conf_list = []
+            label_list = []
+            pred_list = []
+            
+            for ex_index, (example, logits_mat) in enumerate(zip(dataset, all_logits_mat)):
                 for span_b, span_e, span_label in example.label_spans:
                     label_id = label_map[span_label]
                     entity_conf = logits_mat[span_b, span_e].softmax(dim=-1)[label_id].item()
                     pred_label = logits_mat[span_b, span_e].argmax(dim=-1).item()
-                    conf_list1.append(entity_conf)
-                    label_list1.append(label_map[span_label])
-                    pred_list1.append(pred_label)
-
-            for ex_index, (example, logits_mat) in enumerate(zip(dataset, all_logits_mat2)):
-                for span_b, span_e, span_label in example.label_spans:
-                    label_id = label_map[span_label]
-                    entity_conf = logits_mat[span_b, span_e].softmax(dim=-1)[label_id].item()
-                    pred_label = logits_mat[span_b, span_e].argmax(dim=-1).item()
-                    conf_list2.append(entity_conf)
-                    label_list2.append(label_map[span_label])
-                    pred_list2.append(pred_label)
-
-            conf_list1 = np.array(conf_list1)
-            label_list1 = np.array(label_list1)
-            pred_list1 = np.array(pred_list1)
-
-            conf_list2 = np.array(conf_list2)
-            label_list2 = np.array(label_list2)
-            pred_list2 = np.array(pred_list2)
-
-            entity_mean1 = []
+                    conf_list.append(entity_conf)
+                    label_list.append(label_map[span_label])
+                    pred_list.append(pred_label)
+                    
+            conf_list = np.array(conf_list)
+            label_list = np.array(label_list)
+            pred_list = np.array(pred_list)
+            entity_mean = []
             for label in self.label_list:
                 if label == "O":
-                    entity_mean1.append(0)
+                    entity_mean.append(0)
                     continue
                 label_id = label_map[label]
-                r = ((label_list1 == label_id) & (pred_list1 == label_id)).sum() / (label_list1 == label_id).sum()
-                entity_mean1.append(conf_list1[label_list1 == label_id].mean() if r > self.args.pbegin_f1 else 0)
-            entity_mean2 = []
-            for label in self.label_list:
-                if label == "O":
-                    entity_mean2.append(0)
-                    continue
-                label_id = label_map[label]
-                r = ((label_list2 == label_id) & (pred_list2 == label_id)).sum() / (label_list2 == label_id).sum()
-                entity_mean2.append(conf_list2[label_list2 == label_id].mean() if r > self.args.pbegin_f1 else 0)
-
-            logger.info("entity conf1: %s" % str(entity_mean2))
-
+                r = ((label_list == label_id) & (pred_list == label_id)).sum() / (label_list == label_id).sum()
+                entity_mean.append(conf_list[label_list == label_id].mean() if r > self.args.pbegin_f1 else 0)
                 
-            for ex_index, (example, logits_mat) in enumerate(zip(dataset, all_logits_mat1)):
+            logger.info("entity conf: %s" % str(entity_mean))
+                
+            for ex_index, (example, logits_mat) in enumerate(zip(dataset, all_logits_mat)):
                 for span_b, span_e, span_label in example.label_spans:
                     label_id = label_map[span_label]
                     entity_conf = logits_mat[span_b, span_e].softmax(dim=-1)[label_id].item()
-                    if entity_conf < entity_mean1[label_id]:
-                        example.conf_mat1[span_b, span_e] = False
-
-            for ex_index, (example, logits_mat) in enumerate(zip(dataset, all_logits_mat2)):
-                for span_b, span_e, span_label in example.label_spans:
-                    label_id = label_map[span_label]
-                    entity_conf = logits_mat[span_b, span_e].softmax(dim=-1)[label_id].item()
-                    if entity_conf < entity_mean1[label_id]:
-                        example.conf_mat2[span_b, span_e] = False
+                    if entity_conf < entity_mean[label_id]:
+                        example.conf_mat[span_b, span_e] = False
         
         if self.args.select_negative:
-            for example, logits in zip(dataset, all_logits_mat1):
+            for example, logits in zip(dataset, all_logits_mat):
                 tmp_span_list = [(-1, -1, -1)] + example.label_spans + [(example.length, example.length, -1)]
                 for span_id in range(1, len(tmp_span_list)):
                     empty_l = tmp_span_list[span_id - 1][1] + 1
@@ -477,20 +388,8 @@ class Trainer:
                     for l in range(empty_l, empty_r + 1):
                         for r in range(l, empty_r + 1):
                             if logits[l, r].argmax().item() != label_map["O"]:
-                                example.conf_mat1[l, r] = False
+                                example.conf_mat[l, r] = False
 
-        if self.args.select_negative:
-            for example, logits in zip(dataset, all_logits_mat2):
-                tmp_span_list = [(-1, -1, -1)] + example.label_spans + [(example.length, example.length, -1)]
-                for span_id in range(1, len(tmp_span_list)):
-                    empty_l = tmp_span_list[span_id - 1][1] + 1
-                    empty_r = tmp_span_list[span_id][0] - 1
-                    if empty_l > empty_r:
-                        continue
-                    for l in range(empty_l, empty_r + 1):
-                        for r in range(l, empty_r + 1):
-                            if logits[l, r].argmax().item() != label_map["O"]:
-                                example.conf_mat2[l, r] = False
 
 def main():
     parser = argparse.ArgumentParser()
@@ -577,24 +476,16 @@ def main():
         dev_dataset = load_examples(args, mode="dev")
         test_dataset = load_examples(args, mode="test")
         
-        model1 = model_class.from_pretrained(
+        model = model_class.from_pretrained(
             args.model_name_or_path,
             from_tf=bool(".ckpt" in args.model_name_or_path),
             config=config,
             mlp_config=mlp_config,
         ).to(args.device)
         
-        model2 = model_class.from_pretrained(
-            args.model_name_or_path,
-            from_tf=bool(".ckpt" in args.model_name_or_path),
-            config=config,
-            mlp_config=mlp_config,
-        ).to(args.device)
-
         trainer = Trainer(
             args=args,
-            model1=model1,
-            model2=model2,
+            model=model,
             tokenizer=tokenizer,
             label_list=labels,
             train_dataset=train_dataset,
@@ -621,7 +512,7 @@ def main():
             label_list=labels,
             test_dataset=test_dataset,
         )
-        result, predictions = trainer.evaluate(model,mode="test")
+        result, predictions = trainer.evaluate(mode="test")
         logger.info(", ".join("%s: %s" % item for item in result.items()))
     
     
