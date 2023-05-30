@@ -185,6 +185,7 @@ class RobertaNegSampleForTokenClassificationCL(RobertaPreTrainedModel):
 
         indexes = torch.where(labels != -100)
         num = len(indexes[0])
+        
         import pdb
         pdb.set_trace()
         
