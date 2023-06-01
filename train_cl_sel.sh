@@ -60,7 +60,7 @@ SAMPLE_RATE=0.35
 DATA_DIR=$DATA_DIR/$TASK
 OUTPUT_DIR="$OUT_DIR/${TASK}/${MODEL}-lr${LR}-epoch${NUM_EPOCHS}-warmup${WARMUP_STEPS}-bsz${BATCH_SIZE}-bepoch${BEGIN_EPOCH}-seed${SEED}"
 mkdir -p $OUTPUT_DIR
-python $REPO/main_cl.py \
+python $REPO/main_cl_sel.py \
     --data_dir $DATA_DIR \
     --model_type $MODEL_TYPE \
     --model_name_or_path $MODEL \
