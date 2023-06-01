@@ -9,8 +9,8 @@ OUT_DIR=${6:-"$REPO/outputs/"}
 export CUDA_VISIBLE_DEVICES=$GPU
 SP="--select_positive"
 # SP=""
-SN="--select_negative"
-# SN=""
+# SN="--select_negative"
+SN=""
 
 if [ ${TASK:0:5} == "conll" ]; then
     WARMUP_STEPS=800

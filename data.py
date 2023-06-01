@@ -32,6 +32,8 @@ class InputExample(object):
     def reset_conf_mat(self, conf_mat):
         self.conf_mat = conf_mat
 
+    # def init_pos_mat(self, conf_mat):
+    #     self.conf_mat = torch.tensor
 
 class Span(object):
     def __init__(self, l, r, label, conf=None):

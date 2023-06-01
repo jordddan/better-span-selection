@@ -28,7 +28,7 @@ from transformers import (
     RobertaTokenizer,
 )
 
-from model import BertNegSampleForTokenClassification, RobertaNegSampleForTokenClassificationCL
+from model import BertNegSampleForTokenClassification, RobertaNegSampleForTokenClassificationCLSel
 
 from data import *
 
@@ -37,7 +37,7 @@ logger = logging.getLogger(__name__)
 
 MODEL_CLASSES = {
   "bert": (BertConfig, BertNegSampleForTokenClassification, BertTokenizer),
-  "roberta": (RobertaConfig, RobertaNegSampleForTokenClassificationCL, RobertaTokenizer),
+  "roberta": (RobertaConfig, RobertaNegSampleForTokenClassificationCLSel, RobertaTokenizer),
 }
 
 class Trainer:
@@ -58,10 +58,10 @@ class Trainer:
         self.label_list = label_list
         self.pad_token_label_id = CrossEntropyLoss().ignore_index
         self.o_conf = None
-        self.wandb_config = self.get_wandb_config()
-        wandb.init(project=f"EMNLP-NER-CL", config=self.wandb_config, name=f"CL-{args.task}-seed{args.seed}")
-        wandb.define_metric("f1-dev", summary="max")
-        wandb.define_metric("f1-test", summary="max")
+        # self.wandb_config = self.get_wandb_config()
+        # wandb.init(project=f"EMNLP-NER-KNN", config=self.wandb_config, name=f"CL-{args.task}-seed{args.seed}")
+        # wandb.define_metric("f1-dev", summary="max")
+        # wandb.define_metric("f1-test", summary="max")
     def get_wandb_config(self):
         args = self.args
         args_dict = {}
@@ -70,6 +70,8 @@ class Trainer:
         
         return args_dict
     
+
+
     def train(self):
         train_dataloader = DataLoader(self.train_dataset, batch_size=self.args.batch_size, shuffle=True, collate_fn=lambda x: x)
         t_total = len(train_dataloader) // self.args.gradient_accumulation_steps * self.args.num_train_epochs
@@ -102,18 +104,33 @@ class Trainer:
                 self.build_conf_mat()
                 # self.god_eval()
             for step, batch_examples in enumerate(epoch_iterator):
+
                 batch = self.convert_examples_to_features(batch_examples, training=True, is_select=is_select)
-                self.model.train()
+                pos_mat = torch.zeros(batch["labels_mat"].shape,dtype=int)
+                for i in range(len(batch_examples)):
+                    label_spans = batch_examples[i].label_spans
+                    for j in range(len(label_spans)):
+                        l,r = label_spans[j][0],label_spans[j][1]
+                        pos_mat[i:i+1,l:r+1,l:r+1] = 1
+                pos_mat = pos_mat.to(self.args.device)
+
                 batch = {key: value.to(self.args.device) for key, value in batch.items()}
+
+                neg_map = self.model.get_neg_mat(pos_mat,**batch)
+
+                import pdb
+                pdb.set_trace()
+
                 batch["input_ids"] = batch["input_ids"].repeat(2,1)
                 batch["attention_mask"] = batch["attention_mask"].repeat(2,1)
                 batch["start_pos"] = batch["start_pos"].repeat(2,1)
                 batch["labels_mat"] = batch["labels_mat"].repeat(2,1,1)
+
                 loss_ce, loss_cl = self.model(**batch)
 
                 loss = loss_ce + loss_cl * 0.1
 
-                wandb.log({"CE":loss_ce,"CL":loss_cl})
+                # wandb.log({"CE":loss_ce,"CL":loss_cl})
 
                 if self.args.gradient_accumulation_steps > 1:
                     loss = loss / self.args.gradient_accumulation_steps
@@ -128,11 +145,11 @@ class Trainer:
                     if global_steps % self.args.save_steps == 0:
                         result, _ = self.evaluate(mode="dev", prefix=global_steps)
                         logger.info(", ".join("%s: %s" % item for item in result.items()))
-                        wandb.log({"f1-dev":result["f1"]})
+                        # wandb.log({"f1-dev":result["f1"]})
                         if self.args.eval_test_set:
                             result, _ = self.evaluate(mode="test", prefix="test")
                             logger.info(", ".join("%s: %s" % item for item in result.items()))
-                            wandb.log({"f1-test":result["f1"]})
+                            # wandb.log({"f1-test":result["f1"]})
                         if result["f1"] > best_score:
                             logger.info("result['f1']={} > best_score={}".format(result["f1"], best_score))
                             best_score = result["f1"]
@@ -321,6 +338,7 @@ class Trainer:
                     if label_span_mat[l, r] == 0:
                         sample_candidates_correct[ex_index].append((l, r))
                     else:
+                        sample_candidates_correct[ex_index].append((l, r))
                         if not is_selct or example.conf_mat[l, r]:
                             sample_candidates_potential[ex_index].append((l, r))
         return positive_samples, sample_candidates_correct, sample_candidates_potential
