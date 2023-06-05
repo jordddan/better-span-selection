@@ -13,7 +13,7 @@ def knn_search(y, q, k, device="cuda:0"):
     # index = faiss.index_cpu_to_gpu(faiss.StandardGpuResources(), 0, index)  # 将索引移动到 GPU 上
     # 将数据添加到索引中
     index.add(y)
-    distances, indices = index.search(q, k)
+    distances, indices = index.search(-q, k)
     end_time = time.time()
     run_time = end_time - start_time
     print("程序运行时间: {:.2f} 秒".format(run_time))

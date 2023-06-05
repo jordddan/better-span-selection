@@ -32,6 +32,7 @@ from model import BertNegSampleForTokenClassification, RobertaNegSampleForTokenC
 
 from data import *
 
+WANDB = True
 
 logger = logging.getLogger(__name__)
 
@@ -58,10 +59,12 @@ class Trainer:
         self.label_list = label_list
         self.pad_token_label_id = CrossEntropyLoss().ignore_index
         self.o_conf = None
-        # self.wandb_config = self.get_wandb_config()
-        # wandb.init(project=f"EMNLP-NER-KNN", config=self.wandb_config, name=f"CL-{args.task}-seed{args.seed}")
-        # wandb.define_metric("f1-dev", summary="max")
-        # wandb.define_metric("f1-test", summary="max")
+        if WANDB:
+            self.wandb_config = self.get_wandb_config()
+            wandb.init(project=f"EMNLP-NER-KNN", config=self.wandb_config, name=f"CL-{args.task}-seed{args.seed}")
+            wandb.define_metric("f1-dev", summary="max")
+            wandb.define_metric("f1-test", summary="max")
+
     def get_wandb_config(self):
         args = self.args
         args_dict = {}
@@ -83,7 +86,7 @@ class Trainer:
         ]
         optimizer = AdamW(optimizer_grouped_parameters, lr=self.args.learning_rate, eps=self.args.adam_epsilon)
         
-        scheduler = get_linear_schedule_with_warmup(optimizer, num_warmup_steps=self.args.warmup_steps, num_training_steps=t_total)
+        # scheduler = get_linear_schedule_with_warmup(optimizer, num_warmup_steps=self.args.warmup_steps, num_training_steps=t_total)
         logger.info("***** Running training *****")
         logger.info("  Num examples = %d", len(self.train_dataset))
         logger.info("  Num Epochs = %d", self.args.num_train_epochs)
@@ -100,37 +103,55 @@ class Trainer:
         for epoch in train_iterator:
             epoch_iterator = tqdm(train_dataloader, desc="Iteration")
             is_select = self.args.select_begin_epoch >= 0 and epoch >= self.args.select_begin_epoch
-            if is_select:
-                self.build_conf_mat()
+            # if is_select:
+            #     self.build_conf_mat()
                 # self.god_eval()
             for step, batch_examples in enumerate(epoch_iterator):
+                
 
-                batch = self.convert_examples_to_features(batch_examples, training=True, is_select=is_select)
-                pos_mat = torch.zeros(batch["labels_mat"].shape,dtype=int)
-                for i in range(len(batch_examples)):
-                    label_spans = batch_examples[i].label_spans
-                    for j in range(len(label_spans)):
-                        l,r = label_spans[j][0],label_spans[j][1]
-                        pos_mat[i:i+1,l:r+1,l:r+1] = 1
-                pos_mat = pos_mat.to(self.args.device)
+
+                batch = self.convert_examples_to_features(batch_examples, training=True, is_select=False)
 
                 batch = {key: value.to(self.args.device) for key, value in batch.items()}
 
-                neg_map = self.model.get_neg_mat(pos_mat,**batch)
+                if is_select:
+                    gold_labels = torch.zeros(batch["labels_mat"].shape, dtype=int).cuda()
 
-                import pdb
-                pdb.set_trace()
+                    for i, example in enumerate(batch_examples):
+                        for j, span in enumerate(example.real_label_spans):
+                            l,r = span[0], span[1]
+                            gold_labels[i][l:r+1][l:r+1] = 1
+                    gold_labels = gold_labels.view(-1)
 
-                batch["input_ids"] = batch["input_ids"].repeat(2,1)
-                batch["attention_mask"] = batch["attention_mask"].repeat(2,1)
-                batch["start_pos"] = batch["start_pos"].repeat(2,1)
-                batch["labels_mat"] = batch["labels_mat"].repeat(2,1,1)
+                    self.model.eval()
+                    labels, rate1, rate2 = self.model.get_label_mat(gold_labels, **batch) # [batch_size * n * n]
+                    self.model.train()
+                    if WANDB:
+                        wandb.log({"select_acc":rate1, "origin_acc":rate2 })
+                    batch["input_ids"] = batch["input_ids"].repeat(2,1)
+                    batch["attention_mask"] = batch["attention_mask"].repeat(2,1)
+                    batch["start_pos"] = batch["start_pos"].repeat(2,1)
+                    batch["labels_mat"] = labels.repeat(2)
 
-                loss_ce, loss_cl = self.model(**batch)
+                    loss_ce, loss_cl = self.model(**batch)
 
-                loss = loss_ce + loss_cl * 0.1
+                    loss = loss_ce + loss_cl * 0.1
+                else:
+                    # batch["input_ids"] = batch["input_ids"].repeat(2,1)
+                    # batch["attention_mask"] = batch["attention_mask"].repeat(2,1)
+                    # batch["start_pos"] = batch["start_pos"].repeat(2,1)
 
-                # wandb.log({"CE":loss_ce,"CL":loss_cl})
+                    batch["input_ids"] = batch["input_ids"].repeat(2,1)
+                    batch["attention_mask"] = batch["attention_mask"].repeat(2,1)
+                    batch["start_pos"] = batch["start_pos"].repeat(2,1)
+                    batch["labels_mat"] =  batch["labels_mat"].view(-1).repeat(2)
+
+                    loss_ce, loss_cl = self.model(**batch)
+
+                    loss = loss_ce + loss_cl 
+            
+                if WANDB:
+                    wandb.log({"CE":loss_ce,"CL":loss_cl})
 
                 if self.args.gradient_accumulation_steps > 1:
                     loss = loss / self.args.gradient_accumulation_steps
@@ -138,18 +159,20 @@ class Trainer:
                 if (step + 1) % self.args.gradient_accumulation_steps == 0:
                     global_steps += 1
                     torch.nn.utils.clip_grad_norm_(self.model.parameters(), self.args.max_grad_norm)
-                    scheduler.step()  # Update learning rate schedule
+                    # scheduler.step()  # Update learning rate schedule
                     optimizer.step()
                     self.model.zero_grad()
                     
                     if global_steps % self.args.save_steps == 0:
                         result, _ = self.evaluate(mode="dev", prefix=global_steps)
                         logger.info(", ".join("%s: %s" % item for item in result.items()))
-                        # wandb.log({"f1-dev":result["f1"]})
+                        if WANDB:
+                            wandb.log({"f1-dev":result["f1"]})
                         if self.args.eval_test_set:
                             result, _ = self.evaluate(mode="test", prefix="test")
                             logger.info(", ".join("%s: %s" % item for item in result.items()))
-                            # wandb.log({"f1-test":result["f1"]})
+                            if WANDB:
+                                wandb.log({"f1-test":result["f1"]})
                         if result["f1"] > best_score:
                             logger.info("result['f1']={} > best_score={}".format(result["f1"], best_score))
                             best_score = result["f1"]

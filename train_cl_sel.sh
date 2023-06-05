@@ -15,8 +15,8 @@ SN=""
 if [ ${TASK:0:5} == "conll" ]; then
     WARMUP_STEPS=800
     SAVE_STEPS=200
-    BATCH_SIZE=24
-    BEGIN_EPOCH=1
+    BATCH_SIZE=16
+    BEGIN_EPOCH=40
     BEGIN_F1=0.6
     LR=1e-5
     NUM_EPOCHS=40
